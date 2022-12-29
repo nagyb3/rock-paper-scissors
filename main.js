@@ -10,7 +10,7 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) { //playerSelection is case INsensitive
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === "rock" && computerSelection === "scissors") {
         return ["You win! Rock beats Scissors", 0];
@@ -43,26 +43,40 @@ console.log(playerSelection, computerSelection);
 console.log(playRound(playerSelection, computerSelection));
  */
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("what is your choice?");
-        let currentRoundList = playRound(playerSelection, getComputerChoice());
-        console.log(currentRoundList[0]);
-        if (currentRoundList[1] === 0) {
-            playerScore += 1;
-        } else if (currentRoundList[1] === 1) {
-            computerScore += 1;
-        }
-    }
-    if (playerScore > computerScore) {
-        console.log("Congrats! You have won the game!");
-    } else if(playerScore < computerScore) {
-        console.log("The computer has won the game!");
-    } else {
-        console.log("The game has ended in a tie!");
-    }
-}
+
+
+
+// function game() {
+//     let playerScore = 0;
+//     let computerScore = 0;
+//     for (let i = 0; i < 5; i++) {
+//         let playerSelection = prompt("what is your choice?");
+//         let currentRoundList = playRound(playerSelection, getComputerChoice());
+//         console.log(currentRoundList[0]);
+//         if (currentRoundList[1] === 0) {
+//             playerScore += 1;
+//         } else if (currentRoundList[1] === 1) {
+//             computerScore += 1;
+//         }
+//     }
+//     if (playerScore > computerScore) {
+//         console.log("Congrats! You have won the game!");
+//     } else if(playerScore < computerScore) {
+//         console.log("The computer has won the game!");
+//     } else {
+//         console.log("The game has ended in a tie!");
+//     }
+// }
+
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+
+const div = document.querySelector('.result');
+
+
+rock.addEventListener('click', () => div.textContent = playRound('rock', getComputerChoice())[0]);
+paper.addEventListener('click', () => div.textContent = playRound('paper', getComputerChoice())[0]);
+scissors.addEventListener('click', () => div.textContent = playRound('scissors', getComputerChoice())[0]);
 
 game();
