@@ -71,12 +71,52 @@ console.log(playRound(playerSelection, computerSelection));
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
-
+const score = document.querySelector('.score');
 const div = document.querySelector('.result');
 
 
-rock.addEventListener('click', () => div.textContent = playRound('rock', getComputerChoice())[0]);
-paper.addEventListener('click', () => div.textContent = playRound('paper', getComputerChoice())[0]);
-scissors.addEventListener('click', () => div.textContent = playRound('scissors', getComputerChoice())[0]);
+let playerScore = 0;
+let computerScore = 0;
+
+rock.addEventListener('click', () => {
+    let roundList = playRound('rock', getComputerChoice());
+    div.textContent = roundList[0];
+    if (roundList[1] === 0) {
+        playerScore += 1;
+    } else if (roundList[1] === 1) {
+        computerScore += 1;
+    }
+    score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+});
+
+paper.addEventListener('click', () => {
+    let roundList = playRound('paper', getComputerChoice());
+    div.textContent = roundList[0];
+    if (roundList[1] === 0) {
+        playerScore += 1;
+    } else if (roundList[1] === 1) {
+        computerScore += 1;
+    }
+    score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+});
+
+scissors.addEventListener('click', () => {
+    let roundList = playRound('scissors', getComputerChoice());
+    div.textContent = roundList[0];
+    if (roundList[1] === 0) {
+        playerScore += 1;
+    } else if (roundList[1] === 1) {
+        computerScore += 1;
+    }
+    score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+});
+
+// paper.addEventListener('click', () => div.textContent = playRound('paper', getComputerChoice())[0]);
+// scissors.addEventListener('click', () => div.textContent = playRound('scissors', getComputerChoice())[0]);
+
+// score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+
+
+
 
 game();
