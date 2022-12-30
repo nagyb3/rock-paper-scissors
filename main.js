@@ -73,7 +73,7 @@ const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
 const score = document.querySelector('.score');
 const div = document.querySelector('.result');
-
+const winner = document.querySelector('.winner');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -83,8 +83,12 @@ rock.addEventListener('click', () => {
     div.textContent = roundList[0];
     if (roundList[1] === 0) {
         playerScore += 1;
+        winner.textContent = 'Congrats! You have won the game!';
     } else if (roundList[1] === 1) {
         computerScore += 1;
+        if (computerScore >= 5) {
+            winner.textContent = 'You lost the game! The computer has won it!';
+        }
     }
     score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
 });
@@ -94,8 +98,12 @@ paper.addEventListener('click', () => {
     div.textContent = roundList[0];
     if (roundList[1] === 0) {
         playerScore += 1;
+        winner.textContent = 'Congrats! You have won the game!';
     } else if (roundList[1] === 1) {
         computerScore += 1;
+        if (computerScore >= 5) {
+            winner.textContent = 'You lost the game! The computer has won it!';
+        }
     }
     score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
 });
@@ -105,11 +113,18 @@ scissors.addEventListener('click', () => {
     div.textContent = roundList[0];
     if (roundList[1] === 0) {
         playerScore += 1;
+        if (playerScore >= 5) {
+            winner.textContent = 'Congrats! You have won the game!';
+        }
     } else if (roundList[1] === 1) {
         computerScore += 1;
+        if (computerScore >= 5) {
+            winner.textContent = 'You lost the game! The computer has won it!';
+        }
     }
     score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
 });
+
 
 // paper.addEventListener('click', () => div.textContent = playRound('paper', getComputerChoice())[0]);
 // scissors.addEventListener('click', () => div.textContent = playRound('scissors', getComputerChoice())[0]);
@@ -118,5 +133,5 @@ scissors.addEventListener('click', () => {
 
 
 
-
-game();
+//
+// game();
